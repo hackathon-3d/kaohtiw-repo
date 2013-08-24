@@ -4,5 +4,9 @@
     <string name="app_name">Party in the Pants</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
+    <string name="userNameHint">Email Address</string>
+    <string name="passwordHint">Password</string>
+    <string name="submit">Submit</string>
+    <string name="newUser">New</string>
 
 </resources>
