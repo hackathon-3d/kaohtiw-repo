@@ -3,15 +3,21 @@ package com.kaowtiw.partyinmypants;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
 import android.app.ListActivity;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
@@ -28,6 +34,17 @@ public class FindActivity extends ListActivity {
 	private static final String TAG_SUCCESS = "success";
     private static final String TAG_MESSAGE = "message";
     private static final String TAG_PARTY_ID = "party";
+    
+    String partyId;
+	String partyName;
+	String startTime;
+	String endTime;
+	String street;
+	String city;
+	String state;
+	String zip;
+	String description;
+	String date;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -90,17 +107,18 @@ public class FindActivity extends ListActivity {
             	  
             	  JSONObject c = jArray.getJSONObject(i);
             	  
-            	  String partyId = c.getString("partyid");
-            	  String partyName = c.getString("partyname");
-            	  String startTime = c.getString("starttime");
-            	  String endTime = c.getString("endtime");
-            	  String street = c.getString("street");
-            	  String city = c.getString("city");
-            	  String state = c.getString("state");
-            	  String zip = c.getString("zip");
-            	  String description = c.getString("description");
-            	  String date = c.getString("date");
-            	  System.out.println("party name = " + partyName);
+            	  partyId = c.getString("partyid");
+            	  partyName = c.getString("partyname");
+            	  startTime = c.getString("starttime");
+            	  endTime = c.getString("endtime");
+            	  street = c.getString("street");
+            	  city = c.getString("city");
+            	  state = c.getString("state");
+            	  zip = c.getString("zip");
+            	  description = c.getString("description");
+            	  date = c.getString("date");
+            	  String fullAddress = street+" "+city+" "+state+" "+zip;
+
             	  HashMap<String, String> map = new HashMap<String, String>();
             	  
             	  map.put("partyid", partyId);
@@ -113,6 +131,7 @@ public class FindActivity extends ListActivity {
             	  map.put("zip", zip);
             	  map.put("description", description);
             	  map.put("date", date);
+            	  map.put("fullAddress", fullAddress);
             	  
             	  theList.add(map);
               }
@@ -136,9 +155,15 @@ public class FindActivity extends ListActivity {
       }
 	
 	private void updateList() {
-		ListAdapter la = new SimpleAdapter(this,theList,R.layout.activity_list,new String[] {"partyname", "street"},new int[] {R.id.partyName});
+		ListAdapter la = new SimpleAdapter(this,theList,R.layout.activity_list,new String[] { "partyname", "fullAddress" },new int[] { R.id.partyName, R.id.partyAddress });
         setListAdapter(la);
+        ListView lv = getListView();
+        lv.setOnItemClickListener(new OnItemClickListener() {
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+				startActivity(new Intent(FindActivity.this, DetailsActivity.class));
+			}
+        });
 	}
 
 }
-

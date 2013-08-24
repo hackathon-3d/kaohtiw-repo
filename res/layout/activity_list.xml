@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Relative xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/android"
+    
     android:orientation="vertical" >
     
     <TextView
@@ -10,6 +10,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
+        android:textColor="#be542a"
         android:height="45dp"
         android:textSize="30sp" />
     
@@ -17,8 +18,9 @@
         android:id="@+id/partyAddress"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:textColor="#be542a"
         android:gravity="center"
         android:textSize="20sp"
         android:layout_below="@id/partyName" />
     
-</Relative>
+</LinearLayout>

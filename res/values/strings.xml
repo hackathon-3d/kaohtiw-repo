@@ -7,9 +7,11 @@
     <string name="userNameHint">Email Address</string>
     <string name="passwordHint">Password</string>
     <string name="submit">Submit</string>
-    <string name="newUser">New</string>
+    <string name="newUser">Sign Up</string>
     <string name="title_activity_login">LoginActivity</string>
     <string name="title_activity_create_user">CreateUserActivity</string>
     <string name="confirmPasswordHint">Confirm Password</string>
+    <string name="login">Login</string>
+    <string name="title_activity_details">DetailsActivity</string>
 
 </resources>

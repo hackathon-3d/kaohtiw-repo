@@ -6,14 +6,17 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:background="@drawable/android"
+    android:background="@drawable/android1"
     tools:context=".HomeActivity" >
 
     <EditText 
         android:id="@+id/userName"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/userNameHint" />
+        android:textColorHint="#59C06E"
+        android:textColor="#be542a"
+        android:hint="@string/userNameHint"
+         />
     
     <EditText 
         android:id="@+id/password"
@@ -21,6 +24,8 @@
         android:layout_height="wrap_content"
         android:hint="@string/passwordHint"
         android:inputType="textPassword"
+        android:textColorHint="#59C06E"
+        android:textColor="#be542a"
         android:layout_below="@id/userName" />
     
     <RelativeLayout
@@ -37,7 +42,7 @@
             	android:layout_width="0dp"
             	android:layout_height="wrap_content"
             	android:layout_weight=".50"
-            	android:text="@string/submit" />
+            	android:text="@string/login" />
         
         	<Button
             	android:id="@+id/btnLoginNew"

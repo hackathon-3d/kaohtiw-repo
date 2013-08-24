@@ -6,7 +6,7 @@
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
-    android:background="@drawable/android"
+    android:background="@drawable/android1"
     android:paddingTop="@dimen/activity_vertical_margin" >
 
     <EditText
@@ -15,6 +15,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
+        android:textColorHint="#59C06E"
+        android:textColor="#be542a"
         android:ems="10"
         android:hint="Party Name"
         android:imeOptions="actionNext">
@@ -27,6 +29,8 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/partyNameET"
         android:layout_below="@+id/partyNameET"
+        android:textColorHint="#59C06E"
+        android:textColor="#be542a"
         android:ems="10"
         android:hint="Street Address"
         android:imeOptions="actionNext" />
@@ -37,6 +41,8 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/streetAddressET"
         android:layout_below="@+id/streetAddressET"
+        android:textColorHint="#59C06E"
+        android:textColor="#be542a"
         android:ems="10"
         android:hint="City"
         android:imeOptions="actionNext" />
@@ -47,6 +53,8 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/cityET"
         android:layout_below="@+id/cityET"
+        android:textColorHint="#59C06E"
+        android:textColor="#be542a"
         android:ems="10"
         android:hint="State"
         android:imeOptions="actionNext" >
@@ -60,6 +68,8 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/stateET"
         android:layout_below="@+id/stateET"
+        android:textColorHint="#59C06E"
+        android:textColor="#be542a"
         android:ems="10"
         android:hint="Zip"
         android:imeOptions="actionNext" />
@@ -70,6 +80,8 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/zipET"
         android:layout_below="@+id/zipET"
+        android:textColorHint="#59C06E"
+        android:textColor="#be542a"
         android:ems="10"
         android:hint="Start Time"
         android:imeOptions="actionNext"
@@ -81,6 +93,8 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/startTimeET"
         android:layout_below="@+id/startTimeET"
+        android:textColorHint="#59C06E"
+        android:textColor="#be542a"
         android:ems="10"
         android:hint="End Time"
         android:imeOptions="actionNext"
@@ -105,6 +119,8 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/endTimeET"
         android:layout_alignRight="@+id/endTimeET"
+        android:textColorHint="#59C06E"
+        android:textColor="#be542a"
         android:layout_below="@+id/endTimeET"
         android:ems="10"
         android:hint="Date"
@@ -115,6 +131,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/dateET"
+        android:textColorHint="#59C06E"
+        android:textColor="#be542a"
         android:layout_alignRight="@+id/dateET"
         android:layout_below="@+id/dateET"
         android:ems="10"
