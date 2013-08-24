@@ -20,7 +20,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 public class CreateActivity extends Activity implements OnClickListener {
-	EditText partyName, street, city, state, zip, startTime, endTime, description;
+	EditText partyName, street, city, state, zip, startTime, endTime, description, date;
 	Button submit;
 	private ProgressDialog pDialog;
 	JSONParser jsonParser = new JSONParser();
@@ -40,6 +40,7 @@ public class CreateActivity extends Activity implements OnClickListener {
 		startTime = (EditText) findViewById(R.id.startTimeET);
 		endTime = (EditText) findViewById(R.id.endTimeET);
 		description = (EditText) findViewById(R.id.descriptionET);
+		date = (EditText) findViewById(R.id.dateET);
 		submit = (Button) findViewById(R.id.btnCreateParty);
 		
 		submit.setOnClickListener(this);
@@ -72,6 +73,7 @@ public class CreateActivity extends Activity implements OnClickListener {
 			String startTimeStr = startTime.getText().toString();
 			String endTimeStr = endTime .getText().toString();
 			String descriptionStr = description.getText().toString();
+			String dateStr = date.getText().toString();
 			
 			try {
 				List<NameValuePair> params = new ArrayList<NameValuePair>();
@@ -83,6 +85,7 @@ public class CreateActivity extends Activity implements OnClickListener {
 				params.add(new BasicNameValuePair("state", stateStr));
 				params.add(new BasicNameValuePair("zip", zipStr)); 
 				params.add(new BasicNameValuePair("description", descriptionStr));
+				params.add(new BasicNameValuePair("date", dateStr));
 				
 				Log.d("Creating..","starting");
 				JSONObject json = jsonParser.makeHttpRequest(

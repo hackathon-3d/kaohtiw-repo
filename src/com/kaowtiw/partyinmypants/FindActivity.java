@@ -3,60 +3,37 @@ package com.kaowtiw.partyinmypants;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import org.apache.http.NameValuePair;
-import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import android.app.Activity;
+import android.app.ListActivity;
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ListAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
+import android.widget.SimpleAdapter;
 
-public class FindActivity extends Activity {
+public class FindActivity extends ListActivity {
 	private ProgressDialog pDialog;
 	JSONParser jsonParser = new JSONParser();
-	private static final String LOGIN_URL = "http://www.joelv.net/partyapp/listparties.php";
+	private static final String LIST_URL = "http://www.joelv.net/partyapp/list_parties.php";
+	
+	private JSONArray jArray = null;
+	private ArrayList<HashMap<String,String>> theList;
 	
 	private static final String TAG_SUCCESS = "success";
     private static final String TAG_MESSAGE = "message";
+    private static final String TAG_PARTY_ID = "party";
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_find);
-		
-		ListView listView = (ListView)findViewById(R.id.partyList);
-		
-		String[] items = new String[] {
-				"Fuckin Party",
-				"Another Party",
-				"The Party"
-		};
-		
-		ArrayList<String> list = new ArrayList<String>();
-		
-		for (String item : items) {
-			list.add(item);
-		}
-		
-		StableArrayAdapter adapter = new StableArrayAdapter(this, android.R.layout.simple_list_item_1, list);
-		listView.setAdapter(adapter);
-		
-		listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-			@Override
-			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-				// TODO Auto-generated method stub
-				
-			}
-		});
+		new AttemptLogin().execute();
 	}
 	
 	private class StableArrayAdapter extends ArrayAdapter<String> {
@@ -81,7 +58,7 @@ public class FindActivity extends Activity {
 		}
 	}
 	
-	class AttemptLogin extends AsyncTask<String, String, String> {
+	class AttemptLogin extends AsyncTask<Void, Void, Boolean> {
 
 		 /**
        * Before starting background thread Show Progress Dialog
@@ -99,35 +76,45 @@ public class FindActivity extends Activity {
       }
 
 		@Override
-		protected String doInBackground(String... args) {
+		protected Boolean doInBackground(Void... args) {
 			// TODO Auto-generated method stub
 			 // Check for success tag
           int success;
           try {
-              // Building Parameters
-              List<NameValuePair> params = new ArrayList<NameValuePair>();
-              params.add(new BasicNameValuePair("partyname", "partyname"));
-
-              Log.d("request!", "starting");
-              // getting product details by making HTTP request
-              JSONObject json = jsonParser.makeHttpRequest(
-                     LOGIN_URL, "POST", params);
-
-              // check your log for json response
-              Log.d("Login attempt", json.toString());
-
-              // json success tag
-              success = json.getInt(TAG_SUCCESS);
-              if (success == 1) {
-              	Log.d("Login Successful!", json.toString());
-              	Intent i = new Intent(FindActivity.this, MainActivity.class);
-              	finish();
-  				startActivity(i);
-              	return json.getString(TAG_MESSAGE);
-              }else{
-              	Log.d("Login Failure!", json.getString(TAG_MESSAGE));
-              	return json.getString(TAG_MESSAGE);
-
+              theList = new ArrayList<HashMap<String,String>>();
+              JSONParser jParser = new JSONParser();
+              JSONObject json = jParser.getJSONFromUrl(LIST_URL);
+              jArray = json.getJSONArray(TAG_PARTY_ID);
+              
+              for (int i = 0; i < jArray.length(); i++) {
+            	  
+            	  JSONObject c = jArray.getJSONObject(i);
+            	  
+            	  String partyId = c.getString("partyid");
+            	  String partyName = c.getString("partyname");
+            	  String startTime = c.getString("starttime");
+            	  String endTime = c.getString("endtime");
+            	  String street = c.getString("street");
+            	  String city = c.getString("city");
+            	  String state = c.getString("state");
+            	  String zip = c.getString("zip");
+            	  String description = c.getString("description");
+            	  String date = c.getString("date");
+            	  System.out.println("party name = " + partyName);
+            	  HashMap<String, String> map = new HashMap<String, String>();
+            	  
+            	  map.put("partyid", partyId);
+            	  map.put("partyname", partyName);
+            	  map.put("starttime", startTime);
+            	  map.put("endtime", endTime);
+            	  map.put("street", street);
+            	  map.put("city", city);
+            	  map.put("state", state);
+            	  map.put("zip", zip);
+            	  map.put("description", description);
+            	  map.put("date", date);
+            	  
+            	  theList.add(map);
               }
           } catch (JSONException e) {
               e.printStackTrace();
@@ -139,14 +126,19 @@ public class FindActivity extends Activity {
 		/**
        * After completing background task Dismiss the progress dialog
        * **/
-      protected void onPostExecute(String file_url) {
-          // dismiss the dialog once product deleted
+      protected void onPostExecute(Boolean result) {
+          super.onPostExecute(result);
           pDialog.dismiss();
-          if (file_url != null){
-          	Toast.makeText(FindActivity.this, file_url, Toast.LENGTH_LONG).show();
+          
+          updateList();
           }
 
       }
-
+	
+	private void updateList() {
+		ListAdapter la = new SimpleAdapter(this,theList,R.layout.activity_list,new String[] {"partyname", "street"},new int[] {R.id.partyName});
+        setListAdapter(la);
 	}
+
 }
+

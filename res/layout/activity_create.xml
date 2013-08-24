@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/partyName"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:background="@drawable/android"
+    android:paddingTop="@dimen/activity_vertical_margin" >
 
     <EditText
         android:id="@+id/partyNameET"
@@ -15,7 +16,10 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:ems="10"
-        android:hint="Party Name" />
+        android:hint="Party Name"
+        android:imeOptions="actionNext">
+         <requestFocus />
+    </EditText>
 
     <EditText
         android:id="@+id/streetAddressET"
@@ -24,7 +28,8 @@
         android:layout_alignLeft="@+id/partyNameET"
         android:layout_below="@+id/partyNameET"
         android:ems="10"
-        android:hint="Street Address" />
+        android:hint="Street Address"
+        android:imeOptions="actionNext" />
 
     <EditText
         android:id="@+id/cityET"
@@ -33,7 +38,8 @@
         android:layout_alignLeft="@+id/streetAddressET"
         android:layout_below="@+id/streetAddressET"
         android:ems="10"
-        android:hint="City" />
+        android:hint="City"
+        android:imeOptions="actionNext" />
 
     <EditText
         android:id="@+id/stateET"
@@ -42,9 +48,10 @@
         android:layout_alignLeft="@+id/cityET"
         android:layout_below="@+id/cityET"
         android:ems="10"
-        android:hint="State" >
+        android:hint="State"
+        android:imeOptions="actionNext" >
 
-        <requestFocus />
+       
     </EditText>
 
     <EditText
@@ -54,7 +61,8 @@
         android:layout_alignLeft="@+id/stateET"
         android:layout_below="@+id/stateET"
         android:ems="10"
-        android:hint="Zip" />
+        android:hint="Zip"
+        android:imeOptions="actionNext" />
 
     <EditText
         android:id="@+id/startTimeET"
@@ -64,6 +72,7 @@
         android:layout_below="@+id/zipET"
         android:ems="10"
         android:hint="Start Time"
+        android:imeOptions="actionNext"
         android:inputType="time" />
 
     <EditText
@@ -73,10 +82,12 @@
         android:layout_alignLeft="@+id/startTimeET"
         android:layout_below="@+id/startTimeET"
         android:ems="10"
-        android:inputType="time"
-        android:hint="End Time" />
-    
+        android:hint="End Time"
+        android:imeOptions="actionNext"
+        android:inputType="time" />
+
     <RelativeLayout
+        android:id="@+id/relativeLayout1"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true" >
@@ -86,18 +97,29 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="@string/submit" />
-        
     </RelativeLayout>
 
     <EditText
-        android:id="@+id/descriptionET"
+        android:id="@+id/dateET"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/endTimeET"
         android:layout_alignRight="@+id/endTimeET"
         android:layout_below="@+id/endTimeET"
         android:ems="10"
+        android:hint="Date"
+        android:imeOptions="actionNext" />
+
+    <EditText
+        android:id="@+id/descriptionET"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/dateET"
+        android:layout_alignRight="@+id/dateET"
+        android:layout_below="@+id/dateET"
+        android:ems="10"
         android:hint="Description"
+        android:imeOptions="actionDone"
         android:inputType="textMultiLine" />
 
 </RelativeLayout>
