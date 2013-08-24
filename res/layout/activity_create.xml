@@ -89,4 +89,15 @@
         
     </RelativeLayout>
 
+    <EditText
+        android:id="@+id/descriptionET"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/endTimeET"
+        android:layout_alignRight="@+id/endTimeET"
+        android:layout_below="@+id/endTimeET"
+        android:ems="10"
+        android:hint="Description"
+        android:inputType="textMultiLine" />
+
 </RelativeLayout>

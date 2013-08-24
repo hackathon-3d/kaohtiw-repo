@@ -24,26 +24,27 @@ public final class R {
         public static final int ic_launcher=0x7f020000;
     }
     public static final class id {
-        public static final int CreateUserName=0x7f080009;
-        public static final int action_settings=0x7f080014;
+        public static final int CreateUserName=0x7f08000a;
+        public static final int action_settings=0x7f080015;
         public static final int btnCreateParty=0x7f080008;
-        public static final int btnCreateUser=0x7f08000c;
-        public static final int btnLoginNew=0x7f080011;
-        public static final int btnLoginSubmit=0x7f080010;
+        public static final int btnCreateUser=0x7f08000d;
+        public static final int btnLoginNew=0x7f080012;
+        public static final int btnLoginSubmit=0x7f080011;
         public static final int cityET=0x7f080003;
-        public static final int confirmPassword=0x7f08000b;
-        public static final int createButton=0x7f080012;
-        public static final int createPassword=0x7f08000a;
+        public static final int confirmPassword=0x7f08000c;
+        public static final int createButton=0x7f080013;
+        public static final int createPassword=0x7f08000b;
+        public static final int descriptionET=0x7f080009;
         public static final int endTimeET=0x7f080007;
-        public static final int findButton=0x7f080013;
-        public static final int partyList=0x7f08000d;
+        public static final int findButton=0x7f080014;
+        public static final int partyList=0x7f08000e;
         public static final int partyName=0x7f080000;
         public static final int partyNameET=0x7f080001;
-        public static final int password=0x7f08000f;
+        public static final int password=0x7f080010;
         public static final int startTimeET=0x7f080006;
         public static final int stateET=0x7f080004;
         public static final int streetAddressET=0x7f080002;
-        public static final int userName=0x7f08000e;
+        public static final int userName=0x7f08000f;
         public static final int zipET=0x7f080005;
     }
     public static final class layout {

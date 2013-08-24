@@ -39,7 +39,7 @@ public class CreateUserActivity extends Activity implements OnClickListener {
 		user = (EditText)findViewById(R.id.CreateUserName);
 		pass = (EditText)findViewById(R.id.createPassword);
 		
-		submit = (Button) findViewById(R.id.btnCreateUser);
+		submit = (Button)findViewById(R.id.btnCreateUser);
 		submit.setOnClickListener(this);
 
 	}
