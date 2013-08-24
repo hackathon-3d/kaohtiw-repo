@@ -14,9 +14,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
+import android.view.ContextMenu;
+import android.view.ContextMenu.ContextMenuInfo;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.AdapterView.AdapterContextMenuInfo;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
@@ -50,6 +54,7 @@ public class FindActivity extends ListActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_find);
+		registerForContextMenu(getListView());
 		new AttemptLogin().execute();
 	}
 	
@@ -161,9 +166,36 @@ public class FindActivity extends ListActivity {
         lv.setOnItemClickListener(new OnItemClickListener() {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-				startActivity(new Intent(FindActivity.this, DetailsActivity.class));
+				
+				Intent i = new Intent(FindActivity.this, DetailsActivity.class);
+				i.putExtra("party", "partyid" );
+				startActivity(i);
+				
+				
 			}
         });
+	}
+	
+	public void onCreateContextMenu(ContextMenu menu, View v, ContextMenuInfo menuInfo) {
+    	super.onCreateContextMenu(menu, v, menuInfo);
+    	MenuInflater inflater = getMenuInflater();
+    	inflater.inflate(R.menu.context_menu, menu);
+    }
+	public boolean onContextItemSelected(MenuItem item) {
+    	AdapterContextMenuInfo info = (AdapterContextMenuInfo) item.getMenuInfo();
+    		switch(item.getItemId()) {
+				case R.id.going:
+					
+					return true;
+				case R.id.maybe:
+					
+					return true;
+				case R.id.notGoing:
+					
+					return true;
+				default:
+					return super.onContextItemSelected(item);
+    		}
 	}
 
 }
