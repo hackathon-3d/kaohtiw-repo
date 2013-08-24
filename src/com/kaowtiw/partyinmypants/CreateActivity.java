@@ -8,6 +8,8 @@ public class CreateActivity extends Activity {
 	TextView tv;
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_create);
+
 		//tv = (TextView) findViewById(R.id.title);
 		//tv.setText("Hello World");
 	}
